@@ -1,0 +1,43 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	background-color:#fff;
+}
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+	display: none !important;
+}
+/* chrome fix for setting inputs yellow background*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+	box-shadow: 0 0 0px 1000px #fff inset;
+}
+.container h1 {
+	text-align: center;
+}
+.form-container {
+	max-width: 400px;
+	width: 100%;
+	margin: auto;
+}
+.ng-invalid.ng-dirty,
+.ng-invalid.ng-touched,
+.ng-submitted .ng-invalid {
+	border-color: #f00;
+}
+.ng-valid.ng-dirty {
+	border-color: #090;
+}
+.form-group small,
+.checkbox .ng-dirty.ng-invalid + span,
+.ng-submitted .checkbox .ng-invalid + span {
+	color: #F00;
+}
+.loader {
+	margin-top: 10px;
+}

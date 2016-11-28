@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="formApp">
+<head>
+	<meta charset="UTF-8">
+	<title>week 3 e4</title>
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-ng-cloak>
+	<div class="container" data-ng-controller="FormController">
+		<h1><strong>Formularz</strong></h1>
+		<hr>
+		<div class="form-container">
+			<h3><strong>Rejestracja</strong></h3>
+			<hr>
+
+			<div class="alert alert-success text-center" data-ng-show="success === true">Zostałeś/aś zarejstrowany/a</div>
+
+			<form method="post" name="registerForm" novalidate data-ng-submit="register()">
+				<div class="form-group">
+					<label for="firstName">Imię</label>
+					<input type="text" name="firstName" class="form-control" data-ng-model="user.firstName" data-ng-required="true"/>
+				</div>
+				<div class="form-group">
+					<label for="lastName">Nazwisko</label>
+					<input type="text" name="lastName" class="form-control" data-ng-model="user.lastName"/>
+				</div>
+				<div class="form-group">
+					<label for="lastName">Email</label>
+					<input type="email" name="email" class="form-control" data-ng-model="user.email" data-ng-required="true"/>
+				</div>
+				<div class="form-group">
+					<label for="pass">Hasło</label>
+					<input type="password" name="pass" class="form-control" data-ng-model="user.pass" data-ng-required="true" data-ng-minlength="5"/>
+					<div data-ng-show="(registerForm.pass.$touched && registerForm.pass.$invalid) || registerForm.pass.$error.minlength">
+					<small>Hasło musi posiadać min. 5 znaków</small>
+					</div>
+				</div>
+				<div class="checkbox">
+					<label><input type="checkbox" data-ng-model="user.accept" data-ng-required="true" data-ng-change="rules()"><span>Akceptuję regulamin</span></label>
+				</div> 
+				<input type="submit" value="Zarejestruj" name="register" class="btn btn-primary" data-ng-disabled="registerForm.$invalid || formLoading"/>
+				<p class="loader" data-ng-show="formLoading">Trwa rejestracja...</p>
+			</form>
+			<hr>
+			
+			<div class="well" data-ng-show="user.firstName || user.lastName || user.email || user.pass || rulesState">
+				<p data-ng-show="user.firstName">Imię: {{ user.firstName }}</p>
+				<p data-ng-show="user.lastName">Nazwisko: {{ user.lastName }}</p>
+				<p data-ng-show="user.email">Email: {{ user.email }}</p>
+				<p data-ng-show="user.pass">Hasło: {{ user.pass }}</p>
+				<p data-ng-show="rulesState">Regulamin: {{ rulesState }}</p>
+			</div>
+		</div>
+
+	</div>
+	
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/scripts.js"></script>
+</body>
+</html>
